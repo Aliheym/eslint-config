@@ -1,7 +1,7 @@
 {
   "name": "@aliheym/eslint-config",
   "type": "module",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "packageManager": "npm@9.8.1",
   "description": "aliheym's ESLint config",
   "author": "aliheym <aliheym@gmail.com> (https://github.com/aliheym/)",
