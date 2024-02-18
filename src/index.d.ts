@@ -2,7 +2,6 @@ import { type StylisticCustomizeOptions } from '@stylistic/eslint-plugin';
 import { type Linter } from 'eslint';
 
 type FlatConfigItem = Linter.FlatConfig & {
-
   /**
    * Custom name of each config item
    */
@@ -12,7 +11,6 @@ type FlatConfigItem = Linter.FlatConfig & {
 type StylisticConfig = Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'semi'>;
 
 interface OverridesOptions {
-
   /**
    * The rules to override.
    */
@@ -22,7 +20,6 @@ interface OverridesOptions {
 interface StylisticOptions extends StylisticConfig, OverridesOptions {}
 
 interface TypescriptOptions extends OverridesOptions {
-
   /**
    * Path to the tsconfig file.
    *
@@ -41,7 +38,6 @@ interface TypescriptOptions extends OverridesOptions {
 }
 
 interface NodeOptions extends OverridesOptions {
-
   /**
    * Enable Node.js security rules.
    *
@@ -52,7 +48,6 @@ interface NodeOptions extends OverridesOptions {
 }
 
 interface BuildConfigOptions {
-
   /**
    * Core ESLint configuration. Cannot be disabled.
    */

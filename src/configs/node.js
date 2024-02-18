@@ -1,5 +1,4 @@
-import nodePlugin from 'eslint-plugin-n';
-import nodeSecurityPlugin from 'eslint-plugin-security';
+import { interopDefault } from '../utils/index.js';
 
 /**
  * Specifies the rules to lint Node.js security issues
@@ -7,6 +6,7 @@ import nodeSecurityPlugin from 'eslint-plugin-security';
  * @see {@link https://github.com/eslint-community/eslint-plugin-security | eslint-plugin-security}
  */
 export const nodeSecurity = async () => {
+  const nodeSecurityPlugin = await interopDefault('eslint-plugin-security');
   const recommendedConfig = nodeSecurityPlugin.configs.recommended;
 
   return [
@@ -31,6 +31,7 @@ export const nodeSecurity = async () => {
 export const node = async (options = {}) => {
   const { overrides = {} } = options;
 
+  const nodePlugin = await interopDefault('eslint-plugin-n');
   const recommendedConfig = nodePlugin.configs['flat/recommended-module'];
 
   return [

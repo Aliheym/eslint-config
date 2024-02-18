@@ -1,7 +1,5 @@
-import * as yamlPlugin from 'eslint-plugin-yml';
-import * as yamlParser from 'yaml-eslint-parser';
-
 import { GLOB_YAML } from '../constants/globs.js';
+import { interopDefault } from '../utils/index.js';
 
 /**
  * Specifies the rules to lint YAML files.
@@ -15,6 +13,8 @@ export const yaml = async (options = {}) => {
     indent = 2,
     quotes = 'single',
   } = typeof stylistic === 'boolean' ? {} : stylistic;
+
+  const [yamlPlugin, yamlParser] = await Promise.all([interopDefault('eslint-plugin-yml'), interopDefault('yaml-eslint-parser')]);
 
   return [
     {

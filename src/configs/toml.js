@@ -1,7 +1,5 @@
-import * as tomlPlugin from 'eslint-plugin-toml';
-import * as tomlParser from 'toml-eslint-parser';
-
 import { GLOB_TOML } from '../constants/globs.js';
+import { interopDefault } from '../utils/index.js';
 
 /**
  * Specifies the rules to lint TOML files.
@@ -14,6 +12,8 @@ export const toml = async (options = {}) => {
   const {
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic;
+
+  const [tomlPlugin, tomlParser] = await Promise.all([interopDefault('eslint-plugin-toml'), interopDefault('toml-eslint-parser')]);
 
   return [
     {

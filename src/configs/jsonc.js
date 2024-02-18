@@ -1,7 +1,5 @@
-import jsoncPlugin from 'eslint-plugin-jsonc';
-import jsoncParser from 'jsonc-eslint-parser';
-
 import { GLOB_JSON } from '../constants/globs.js';
+import { interopDefault } from '../utils/index.js';
 
 /**
  * Specifies the rules to lint JSON and JSONC files.
@@ -14,6 +12,8 @@ export const jsonc = async (options = {}) => {
   const {
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic;
+
+  const [jsoncPlugin, jsoncParser] = await Promise.all([interopDefault('eslint-plugin-jsonc'), interopDefault('jsonc-eslint-parser')]);
 
   return [
     {

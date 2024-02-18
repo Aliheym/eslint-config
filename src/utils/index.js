@@ -29,3 +29,9 @@ export const combineConfigs = async (...configs) => {
 
   return combinedConfigs.flat();
 };
+
+export const interopDefault = async (module) => {
+  const importedModule = await import(module);
+
+  return importedModule.default || importedModule;
+};

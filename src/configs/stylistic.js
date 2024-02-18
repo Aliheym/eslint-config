@@ -1,5 +1,6 @@
-import stylisticPlugin from '@stylistic/eslint-plugin';
 import { isPackageExists } from 'local-pkg';
+
+import { interopDefault } from '../utils/index.js';
 
 const maxLineLength = 100;
 
@@ -19,6 +20,8 @@ export const stylistic = async (options = {}) => {
   const {
     indent, overrides = {}, quotes, semi, typescript = isPackageExists('typescript'),
   } = { ...defaultStylisticConfig, ...options };
+
+  const stylisticPlugin = await interopDefault('@stylistic/eslint-plugin');
 
   const baseConfig = stylisticPlugin.configs.customize({
     flat: true,
@@ -137,6 +140,14 @@ export const stylistic = async (options = {}) => {
           {
             afterBlockComment: false,
             afterHashbangComment: false,
+            allowArrayStart: true,
+            allowBlockStart: true,
+            allowClassStart: true,
+            allowEnumStart: true,
+            allowInterfaceStart: true,
+            allowModuleStart: true,
+            allowObjectStart: true,
+            allowTypeStart: true,
             beforeBlockComment: true,
           },
         ],

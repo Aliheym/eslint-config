@@ -1,6 +1,6 @@
-import tseslint from 'typescript-eslint';
+import { interopDefault } from '../utils/index.js';
 
-const getBaseConfig = ({ strict, typeAwareRulesEnabled }) => {
+const getBaseConfig = ({ strict, tseslint, typeAwareRulesEnabled }) => {
   if (typeAwareRulesEnabled) {
     return strict ? tseslint.configs.strictTypeChecked : tseslint.configs.recommendedTypeChecked;
   }
@@ -11,8 +11,10 @@ const getBaseConfig = ({ strict, typeAwareRulesEnabled }) => {
 export const typescript = async (options = {}) => {
   const { overrides = {}, strict = false, tsconfigPath } = options;
 
+  const tseslint = await interopDefault('typescript-eslint');
+
   const typeAwareRulesEnabled = !!tsconfigPath;
-  const baseConfigs = [...getBaseConfig({ strict, typeAwareRulesEnabled })];
+  const baseConfigs = [...getBaseConfig({ strict, tseslint, typeAwareRulesEnabled })];
 
   if (typeAwareRulesEnabled) {
     baseConfigs.push({
