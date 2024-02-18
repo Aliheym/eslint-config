@@ -50,7 +50,7 @@ There is a plugin called [VS Code ESLint extension](https://marketplace.visualst
 
 Add the following to your `.vscode/settings.json`:
 
-```json
+```jsonc
 {
   // Enable the ESlint flat config support
   "eslint.experimental.useFlatConfig": true,
