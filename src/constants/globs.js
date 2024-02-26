@@ -53,3 +53,5 @@ export const GLOB_PACKAGE_JSON = '**/package.json';
 export const GLOB_TS_CONFIG = '**/tsconfig.json';
 
 export const GLOB_TS_ANY_CONFIG = '**/tsconfig.*.json';
+
+export const GLOB_TS = '**/*.ts?(x)';

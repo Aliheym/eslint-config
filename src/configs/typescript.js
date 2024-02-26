@@ -1,3 +1,6 @@
+import merge from 'lodash.merge';
+
+import { GLOB_TS } from '../constants/globs.js';
 import { interopDefault } from '../utils/index.js';
 
 const getBaseConfig = ({ strict, tseslint, typeAwareRulesEnabled }) => {
@@ -93,7 +96,7 @@ export const typescript = async (options = {}) => {
     'dot-notation': 'off',
   };
 
-  return tseslint.config(...baseConfigs, {
+  const config = tseslint.config(...baseConfigs, {
     rules: {
       // Turn off ESLint rules that are covered by TypeScript rules
       camelcase: 'off',
@@ -173,4 +176,10 @@ export const typescript = async (options = {}) => {
       ...overrides,
     },
   });
+
+  return [
+    merge(...config, {
+      files: [GLOB_TS],
+    }),
+  ];
 };

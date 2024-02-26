@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line no-unused-vars
 const validateEmailFormat = (string) => {
   const emailExpression = /^([\w.-])+@(([\dA-Za-z-])+\.)+([\dA-Za-z]{2,4})+$/;
 

@@ -134,6 +134,22 @@ describe('TypeScript', () => {
     expect(results).toHaveLength(1);
     expect(results[0].messages).toHaveLength(0);
   });
+
+  test('should not conflict with other parsers', async () => {
+    const cwd = join(fixturesPath, 'typescript', 'other-parsers');
+    const eslint = new FlatESLint({ cwd });
+
+    const filesToLint = ['json.json', 'typescript.ts'];
+    const results = await eslint.lintFiles(filesToLint);
+
+    expect(results).toHaveLength(2);
+    expect(results[0].messages).toHaveLength(1);
+    expect(results[0].messages[0].ruleId).toBe('jsonc/indent');
+
+    expect(results[1].messages).toHaveLength(2);
+    expect(results[1].messages[0].ruleId).toBe('unicorn/no-unnecessary-await');
+    expect(results[1].messages[1].ruleId).toBe('@typescript-eslint/await-thenable');
+  });
 });
 
 describe('Comments', () => {
